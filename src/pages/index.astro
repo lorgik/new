@@ -11,7 +11,17 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</main>
 
-	<section id="about"></section>
+	<section id="about">
+		<div class="container">
+			<div class="about__inner">
+				<h2 class="about__title">
+					<span>НАША СИЛЬНАЯ СТОРОНА</span>
+					<span>ЭТО СПИЗДИТЬ ДИЗАЙН</span>
+					<span>САЙТОВ И ПРИЛОЖЕНИЙ.</span>
+				</h2>
+			</div>
+		</div>
+	</section>
 
 
 	<section class="menu">
@@ -53,9 +63,21 @@ import Layout from '../layouts/Layout.astro';
 		opacity: 0.3;
 	}
 	#about {
+		padding-top: 100px;	
 		position: relative;
 		min-height: 2000px;
 		background-color: #2c2c2c;
+	}
+	.about__title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.about__title span {
+		color: #fff;
+		font-size: 5rem;
+		line-height: 1;
 	}
 	
 	.menu {
@@ -83,3 +105,32 @@ import Layout from '../layouts/Layout.astro';
 		font-weight: 500;
 	}
 </style>
+
+<script>
+	const titles = document.querySelectorAll('.about__title span');
+	let lastKnownScrollPosition = 0;
+	let ticking = false;
+
+
+	function fadeRight(title: any) {
+		title.setAttribute('style', `transform: translate(${lastKnownScrollPosition / 5 - 150}px, 0px);`);
+	}
+	function fadeLeft(title: any) {
+		title.setAttribute('style', `transform: translate(-${lastKnownScrollPosition / 5 - 150}px, 0px);`);
+	}
+
+document.addEventListener("scroll", (event) => {
+  lastKnownScrollPosition = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+			fadeRight(titles[0])
+			fadeLeft(titles[1])
+			fadeRight(titles[2])
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+</script>
