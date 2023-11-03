@@ -3,7 +3,7 @@ const { title, className } = Astro.props;
 ---
 
 <button class={`${className} blob-btn`}>
-  {title}
+  <span class="blot-btn__title">{title}</span>
   <span class="blob-btn__inner">
     <span class="blob-btn__blobs">
       <span class="blob-btn__blob"></span>
