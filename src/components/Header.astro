@@ -1,0 +1,35 @@
+---
+import BlobButton from "./BlobButton.astro";
+
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header__inner">
+      <div class="header__logo">
+        <img src="https://static.tildacdn.com/tild3231-6363-4938-b935-376463356136/logo.svg" alt="webforyou">
+      </div>
+      <BlobButton title="Меню" className="header__toggle" />
+      <BlobButton title="Получить консультацию" className="header__brief" />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 20px 0;
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header__logo {
+    width: 280px;
+  }
+</style>
+

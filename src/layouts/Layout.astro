@@ -1,0 +1,95 @@
+---
+import Header from '../components/Header.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<Header />
+			<slot />
+		</div>
+		
+
+		<script src="../scripts/menu.ts"></script>
+	</body>
+</html>
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-size: 16px;
+		color: #373e4d;
+		font-family: system-ui, sans-serif;
+		text-transform: lowercase;
+	}
+	body.scroll-lock {
+		overflow: hidden;
+	}
+	a {
+		text-decoration: none;
+	}
+	.wrapper {
+		position: relative;
+	}
+	.container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 0 5rem;
+  }
+	button {
+		border: none;
+		outline: none;
+		text-transform: lowercase;
+	}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
+<script>
+SmoothScroll({
+    // Время скролла 400 = 0.4 секунды
+    animationTime    : 800,
+    // Размер шага в пикселях 
+    stepSize         : 90,
+
+    // Дополнительные настройки:
+    
+    // Ускорение 
+    accelerationDelta : 30,  
+    // Максимальное ускорение
+    accelerationMax   : 2,   
+
+    // Поддержка клавиатуры
+    keyboardSupport   : true,  
+    // Шаг скролла стрелками на клавиатуре в пикселях
+    arrowScroll       : 50,
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm   : true,
+    pulseScale       : 4,
+    pulseNormalize   : 1,
+
+    // Поддержка тачпада
+    touchpadSupport   : true,
+})
+</script>
