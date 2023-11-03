@@ -108,6 +108,7 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
 	const titles = document.querySelectorAll('.about__title span');
+	const header = document.querySelector('.header');
 	let lastKnownScrollPosition = 0;
 	let ticking = false;
 
@@ -121,7 +122,11 @@ import Layout from '../layouts/Layout.astro';
 
 document.addEventListener("scroll", (event) => {
   lastKnownScrollPosition = window.scrollY;
-
+	if (lastKnownScrollPosition !== 0) {
+		header?.classList.add('is-hidden')
+	} else {
+		header?.classList.remove('is-hidden')
+	}
   if (!ticking) {
     window.requestAnimationFrame(() => {
 			fadeRight(titles[0])

@@ -22,6 +22,12 @@ import BlobButton from "./BlobButton.astro";
     z-index: 1;
     width: 100%;
     padding: 20px 0;
+    transform: translateY(0);
+
+    transition: all 0.5s ease;
+  }
+  .header.is-hidden {
+    transform: translateY(-100%);
   }
   .header__inner {
     display: flex;
@@ -31,5 +37,6 @@ import BlobButton from "./BlobButton.astro";
   .header__logo {
     width: 280px;
   }
+
 </style>
 
